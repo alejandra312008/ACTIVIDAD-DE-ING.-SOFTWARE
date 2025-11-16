@@ -2,6 +2,7 @@ package co.edu.unicartagena.actvidadingenieria.servicios;
 
 import co.edu.unicartagena.actvidadingenieria.entities.Employee;
 import co.edu.unicartagena.actvidadingenieria.valuesobjects.Money;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
