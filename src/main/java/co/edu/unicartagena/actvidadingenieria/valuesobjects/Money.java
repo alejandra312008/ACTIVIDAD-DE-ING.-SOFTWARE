@@ -1,4 +1,4 @@
-package actividadingenieriasoftware.valuesobjects;
+package co.edu.unicartagena.actvidadingenieria.valuesobjects;
 
 
 import java.math.BigDecimal;

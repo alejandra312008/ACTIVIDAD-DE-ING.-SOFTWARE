@@ -1,4 +1,6 @@
-package actividadingenieriasoftware.entities;
+package co.edu.unicartagena.actvidadingenieria.entities;
+
+import co.edu.unicartagena.actvidadingenieria.valuesobjects.Money;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,5 +30,4 @@ public class SalariedEmployee extends Employee {
 
         return benefits;
     }
-
 }

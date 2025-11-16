@@ -1,19 +1,17 @@
-package actividadingenieriasoftware;
+package co.edu.unicartagena.actvidadingenieria;
+
+import co.edu.unicartagena.actvidadingenieria.entities.*;
+import co.edu.unicartagena.actvidadingenieria.servicios.PayrollCalculator;
+import co.edu.unicartagena.actvidadingenieria.servicios.PayrollReportGenerator;
+import co.edu.unicartagena.actvidadingenieria.valuesobjects.Money;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- * @author alejandra
- */
 public class ActividadIngenieriaSoftware {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // Crear ejemplos
         List<Employee> employees = Arrays.asList(

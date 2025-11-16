@@ -1,4 +1,7 @@
-package actividadingenieriasoftware.entities;
+package co.edu.unicartagena.actvidadingenieria.entities;
+
+import co.edu.unicartagena.actvidadingenieria.exceptions.NegativeHoursException;
+import co.edu.unicartagena.actvidadingenieria.valuesobjects.Money;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -48,6 +51,4 @@ public class HourlyEmployee extends Employee {
 
         return benefits;
     }
-
-
 }

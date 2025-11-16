@@ -1,6 +1,4 @@
-package actividadingenieriasoftware;
-
-import actividadingenieriasoftware.valuesobjects.Money;
+import actividadingenieriasoftware.co.edu.unicartagena.actvidadingenieria.valuesobjects.Money;
 
 public class MoneyTest {
 
