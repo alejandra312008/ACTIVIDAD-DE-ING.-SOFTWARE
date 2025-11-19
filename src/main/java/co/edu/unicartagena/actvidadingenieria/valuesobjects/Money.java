@@ -1,6 +1,6 @@
 package co.edu.unicartagena.actvidadingenieria.valuesobjects;
 
-
+import co.edu.unicartagena.actvidadingenieria.exceptions.NegativeSalaryException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
@@ -8,19 +8,25 @@ import java.util.Objects;
 public class Money {
     private final BigDecimal amount;
 
-    private static final BigDecimal ZERO = BigDecimal.ZERO;
-    private static final int SCALE = 2;
-    private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+    public static Money ZERO() {
+        return new Money(BigDecimal.ZERO);
+    }
 
     public Money(BigDecimal amount) {
-        if (amount.compareTo(ZERO) < 0) {
-            throw new IllegalArgumentException("El monto no puede ser negativo");
+        // Forzamos 2 decimales SIEMPRE
+        this.amount = amount.setScale(2, RoundingMode.HALF_UP);
+
+        if (this.amount.compareTo(BigDecimal.ZERO) < 0) {
+             throw new IllegalArgumentException("El monto no puede ser negativo");
         }
-        this.amount = amount.setScale(SCALE, ROUNDING_MODE);
     }
 
     public Money(String amount) {
         this(new BigDecimal(amount));
+    }
+
+    public Money(double amount) {
+        this(BigDecimal.valueOf(amount));
     }
 
     public BigDecimal getAmount() {
@@ -33,19 +39,25 @@ public class Money {
 
     public Money subtract(Money other) {
         BigDecimal result = this.amount.subtract(other.amount);
-//        if (result.compareTo(ZERO) < 0) {
-//            throw new NegativeSalaryException("El salario neto no puede ser negativo");
-//        }
+        
+        if (result.compareTo(BigDecimal.ZERO) < 0) {
+            throw new NegativeSalaryException("El salario neto no puede ser negativo");
+        }
         return new Money(result);
     }
 
-    public Money multiply(BigDecimal multiplier) {
-        return new Money(this.amount.multiply(multiplier));
+    public Money multiply(BigDecimal multiplicand) {
+        return new Money(this.amount.multiply(multiplicand));
     }
 
-    public Money multiply(double multiplier) {
-        return multiply(BigDecimal.valueOf(multiplier));
+    public Money multiply(double multiplicand) {
+        return multiply(BigDecimal.valueOf(multiplicand));
     }
+
+   @Override
+public String toString() {
+    return "$" + String.format("%,.2f", amount);
+}
 
     @Override
     public boolean equals(Object o) {
@@ -58,14 +70,5 @@ public class Money {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("$%,.2f", amount);
-    }
-
-    public static Money ZERO() {
-        return new Money(ZERO);
     }
 }
