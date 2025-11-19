@@ -1,13 +1,13 @@
 package co.edu.unicartagena.actvidadingenieria.entities;
 
 import co.edu.unicartagena.actvidadingenieria.valuesobjects.Money;
-import lombok.Getter;
+// import lombok.Getter; // Comentamos o borramos esto
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 
-@Getter
+// @Getter // Borramos la anotación que causa el error
 public abstract class Employee {
     private final String id;
     private final String name;
@@ -22,6 +22,20 @@ public abstract class Employee {
         this.name = name;
         this.hireDate = hireDate;
     }
+
+    // --- AGREGAMOS LOS GETTERS  ---
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+    // ----------------------------------------------------------
 
     public int getYearsOfService() {
         return Period.between(hireDate, LocalDate.now()).getYears();
